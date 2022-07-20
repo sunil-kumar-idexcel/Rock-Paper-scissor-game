@@ -7,7 +7,7 @@ const Result = ({ compWinCount, userWinCount, gameOver, rounds }) => {
     setWinner("computer");
     gameOver();
   }
-  if (userWinCount == Math.ceil(rounds / 2) && winner === "none") {
+  if (userWinCount === Math.ceil(rounds / 2) && winner === "none") {
     setWinner("user");
     gameOver();
   }
@@ -34,6 +34,6 @@ Result.propTypes = {
   compWinCount:PropTypes.number,
   userWinCount:PropTypes.number,
   gameOver:PropTypes.func,
-  rounds:PropTypes.number,
+  rounds:PropTypes.number
 }
 export default memo(Result);
