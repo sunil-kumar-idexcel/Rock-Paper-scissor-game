@@ -34,6 +34,6 @@ Result.propTypes = {
   compWinCount:PropTypes.number,
   userWinCount:PropTypes.number,
   gameOver:PropTypes.func,
-  rounds:PropTypes.number
+  rounds:PropTypes.number,
 }
 export default memo(Result);
