@@ -20,22 +20,47 @@ const GamePage = ({ objects, rounds }) => {
       ? setCompWinCount((prevState) => prevState + 1)
       : setUserWinCount((prevState) => prevState + 1);
 
+    // function winnerObject(obj1, obj2) {
+    //   if (
+    //     (obj1 === "Rock" && obj2 === "Paper") ||
+    //     (obj2 === "Rock" && obj1 === "Paper")
+    //   )
+    //     return "Paper";
+    //   if (
+    //     (obj1 === "Rock" && obj2 === "Scissors") ||
+    //     (obj2 === "Rock" && obj1 === "Scissors")
+    //   )
+    //     return "Rock";
+    //   if (
+    //     (obj1 === "Paper" && obj2 === "Scissors") ||
+    //     (obj2 === "Paper" && obj1 === "Scissors")
+    //   )
+    //     return "Scissors";
+    // }
+
     function winnerObject(obj1, obj2) {
-      if (
-        (obj1 === "Rock" && obj2 === "Paper") ||
-        (obj2 === "Rock" && obj1 === "Paper")
-      )
-        return "Paper";
-      if (
-        (obj1 === "Rock" && obj2 === "Scissors") ||
-        (obj2 === "Rock" && obj1 === "Scissors")
-      )
-        return "Rock";
-      if (
-        (obj1 === "Paper" && obj2 === "Scissors") ||
-        (obj2 === "Paper" && obj1 === "Scissors")
-      )
-        return "Scissors";
+      if (obj1 === "Rock") {
+        switch (obj2) {
+          case "Paper":
+            return "Paper";
+          default:
+            return "Scissors";
+        }
+      } else if (obj1 === "Paper") {
+        switch (obj2) {
+          case "Rock":
+            return "Paper";
+          default:
+            return "Scissors";
+        }
+      } else {
+        switch (obj2) {
+          case "Rock":
+            return "Rock";
+          default:
+            return "Scissors";
+        }
+      }
     }
   };
 
