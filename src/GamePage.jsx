@@ -1,5 +1,5 @@
 import { Fragment, useState, memo } from "react";
-import PropTypes, { object, string } from "prop-types";
+import PropTypes, { object} from "prop-types";
 import GameObjects from "./components/GameObjects";
 import PickedChoices from "./components/PickedChoices";
 import Result from "./components/Result";
@@ -19,24 +19,6 @@ const GamePage = ({ objects, rounds }) => {
     winObjId === comp_ch.id
       ? setCompWinCount((prevState) => prevState + 1)
       : setUserWinCount((prevState) => prevState + 1);
-
-    // function winnerObject(obj1, obj2) {
-    //   if (
-    //     (obj1 === "Rock" && obj2 === "Paper") ||
-    //     (obj2 === "Rock" && obj1 === "Paper")
-    //   )
-    //     return "Paper";
-    //   if (
-    //     (obj1 === "Rock" && obj2 === "Scissors") ||
-    //     (obj2 === "Rock" && obj1 === "Scissors")
-    //   )
-    //     return "Rock";
-    //   if (
-    //     (obj1 === "Paper" && obj2 === "Scissors") ||
-    //     (obj2 === "Paper" && obj1 === "Scissors")
-    //   )
-    //     return "Scissors";
-    // }
 
     function winnerObject(obj1, obj2) {
       if (obj1.id === 1) {

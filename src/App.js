@@ -5,7 +5,7 @@ function App() {
   const objects = [
     { id: 1, title: "Rock" },
     { id: 2, title: "Paper" },
-    { id: 3, title: "Scissors" },
+    { id: 3, title: "Scissor" },
   ];
   return (
     <div className="App">
