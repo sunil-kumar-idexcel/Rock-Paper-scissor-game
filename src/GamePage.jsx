@@ -1,11 +1,11 @@
 import { Fragment, useState, memo } from "react";
-import PropTypes, { string } from "prop-types";
+import PropTypes, { object, string } from "prop-types";
 import GameObjects from "./components/GameObjects";
 import PickedChoices from "./components/PickedChoices";
 import Result from "./components/Result";
 const GamePage = ({ objects, rounds }) => {
-  const [user_ch, set_user_ch] = useState("");
-  const [comp_ch, set_comp_ch] = useState("");
+  const [user_ch, set_user_ch] = useState({});
+  const [comp_ch, set_comp_ch] = useState({});
   const [userWinCount, setUserWinCount] = useState(0);
   const [compWinCount, setCompWinCount] = useState(0);
   const [btnDisable, setBtnDisable] = useState(false);
@@ -15,8 +15,8 @@ const GamePage = ({ objects, rounds }) => {
     set_user_ch(user_ch);
     console.log(user_ch, comp_ch);
     console.log("winnerObject", winnerObject(user_ch, comp_ch));
-    let winObj = winnerObject(user_ch, comp_ch);
-    winObj === comp_ch
+    let winObjId = winnerObject(user_ch, comp_ch);
+    winObjId === comp_ch.id
       ? setCompWinCount((prevState) => prevState + 1)
       : setUserWinCount((prevState) => prevState + 1);
 
@@ -39,26 +39,26 @@ const GamePage = ({ objects, rounds }) => {
     // }
 
     function winnerObject(obj1, obj2) {
-      if (obj1 === "Rock") {
-        switch (obj2) {
-          case "Paper":
-            return "Paper";
+      if (obj1.id === 1) {
+        switch (obj2.id) {
+          case 2:
+            return 2;
           default:
-            return "Scissors";
+            return 3;
         }
-      } else if (obj1 === "Paper") {
-        switch (obj2) {
-          case "Rock":
-            return "Paper";
+      } else if (obj1.id === 2) {
+        switch (obj2.id) {
+          case 1:
+            return 2;
           default:
-            return "Scissors";
+            return 3;
         }
       } else {
-        switch (obj2) {
-          case "Rock":
-            return "Rock";
+        switch (obj2.id) {
+          case 1:
+            return 1;
           default:
-            return "Scissors";
+            return 3;
         }
       }
     }
@@ -87,7 +87,7 @@ const GamePage = ({ objects, rounds }) => {
 };
 
 GamePage.propTypes = {
-  objects: PropTypes.arrayOf(string),
+  objects: PropTypes.arrayOf(object),
   rounds: PropTypes.number,
 };
 
